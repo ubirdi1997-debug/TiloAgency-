@@ -1,13 +1,13 @@
 {
   "settings": {
-    "siteTitle": "Tilo Live",
-    "heroHeadline": "Join Tilo Live and Start Earning Today",
-    "heroSubheadline": "Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.",
+    "siteTitle": "Tilo Live Test",
+    "heroHeadline": "Test Headline",
+    "heroSubheadline": "Test Subheadline",
     "primaryColor": "#38bdf8",
     "secondaryColor": "#0ea5e9",
-    "contactEmail": "info@tilolive.in",
+    "contactEmail": "test@tilolive.in",
     "contactPhone": "+91 82669 41716",
-    "footerText": "\u00a9 2025 Tilo Live. All rights reserved.",
+    "footerText": "\u00a9 2025 Tilo Live Test",
     "whatsappNumber": "+918266941716",
     "socialMedia": {
       "facebook": "",
@@ -26,6 +26,16 @@
       "id": "0b77877c-4c4c-4af6-8158-7877b84ce0c0",
       "timestamp": "2026-01-27T20:59:49.059681",
       "read": false
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "+91 9876543210",
+      "subject": "Test Subject",
+      "message": "This is a test message",
+      "id": "39b49a53-d54a-467e-b325-e7dc353158b4",
+      "timestamp": "2026-01-27T21:01:22.202000",
+      "read": false
     }
   ],
   "newsletters": [
@@ -33,6 +43,19 @@
       "id": "5a33fa10-651d-46dc-b689-f8201fc9b2ea",
       "email": "subscriber@example.com",
       "timestamp": "2026-01-27T20:59:49.673673"
+    },
+    {
+      "id": "14cf73be-4348-43e9-9c52-c21e56cb3e81",
+      "email": "test_210122@example.com",
+      "timestamp": "2026-01-27T21:01:22.613809"
     }
-  ]
+  ],
+  "smtpSettings": {
+    "host": "smtp.hostinger.com",
+    "port": 587,
+    "username": "test@tilolive.in",
+    "password": "testpassword",
+    "from_email": "noreply@tilolive.in",
+    "from_name": "Tilo Live"
+  }
 }
