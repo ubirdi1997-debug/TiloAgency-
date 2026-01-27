@@ -36,6 +36,16 @@
       "id": "39b49a53-d54a-467e-b325-e7dc353158b4",
       "timestamp": "2026-01-27T21:01:22.202000",
       "read": false
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "",
+      "subject": "Test Subject",
+      "message": "This is a test message",
+      "id": "9b04864d-37f7-4ec9-a03c-3c8393b8493c",
+      "timestamp": "2026-01-27T21:02:45.945748",
+      "read": false
     }
   ],
   "newsletters": [
@@ -48,6 +58,11 @@
       "id": "14cf73be-4348-43e9-9c52-c21e56cb3e81",
       "email": "test_210122@example.com",
       "timestamp": "2026-01-27T21:01:22.613809"
+    },
+    {
+      "id": "9d6ece49-6e97-46bd-861b-c07d3dd97963",
+      "email": "test@example.com",
+      "timestamp": "2026-01-27T21:02:30.188242"
     }
   ],
   "smtpSettings": {
