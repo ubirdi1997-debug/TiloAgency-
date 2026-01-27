@@ -21,6 +21,8 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Simple authentication (in production, use proper auth)
+  // TODO: Replace with secure server-side authentication (e.g., NextAuth.js)
+  // WARNING: This is a DEMO implementation only - password is visible in client code
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === 'admin123') {
