@@ -1,13 +1,13 @@
 {
   "settings": {
-    "siteTitle": "Tilo Live Test",
-    "heroHeadline": "Test Headline",
-    "heroSubheadline": "Test Subheadline",
+    "siteTitle": "Tilo Live",
+    "heroHeadline": "Join Tilo Live and Start Earning Today",
+    "heroSubheadline": "Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.",
     "primaryColor": "#38bdf8",
     "secondaryColor": "#0ea5e9",
-    "contactEmail": "test@tilolive.in",
+    "contactEmail": "info@tilolive.in",
     "contactPhone": "+91 82669 41716",
-    "footerText": "\u00a9 2025 Tilo Live Test",
+    "footerText": "© 2025 Tilo Live. All rights reserved.",
     "whatsappNumber": "+918266941716",
     "socialMedia": {
       "facebook": "",
@@ -23,54 +23,16 @@
       "phone": "+91 9876543210",
       "subject": "Test Message",
       "message": "This is a test message from the contact form",
-      "id": "0b77877c-4c4c-4af6-8158-7877b84ce0c0",
-      "timestamp": "2026-01-27T20:59:49.059681",
-      "read": false
-    },
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "+91 9876543210",
-      "subject": "Test Subject",
-      "message": "This is a test message",
-      "id": "39b49a53-d54a-467e-b325-e7dc353158b4",
-      "timestamp": "2026-01-27T21:01:22.202000",
-      "read": false
-    },
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "",
-      "subject": "Test Subject",
-      "message": "This is a test message",
-      "id": "9b04864d-37f7-4ec9-a03c-3c8393b8493c",
-      "timestamp": "2026-01-27T21:02:45.945748",
+      "id": "test-message-1",
+      "timestamp": "2025-01-27T20:00:00.000Z",
       "read": false
     }
   ],
   "newsletters": [
     {
-      "id": "5a33fa10-651d-46dc-b689-f8201fc9b2ea",
+      "id": "test-newsletter-1",
       "email": "subscriber@example.com",
-      "timestamp": "2026-01-27T20:59:49.673673"
-    },
-    {
-      "id": "14cf73be-4348-43e9-9c52-c21e56cb3e81",
-      "email": "test_210122@example.com",
-      "timestamp": "2026-01-27T21:01:22.613809"
-    },
-    {
-      "id": "9d6ece49-6e97-46bd-861b-c07d3dd97963",
-      "email": "test@example.com",
-      "timestamp": "2026-01-27T21:02:30.188242"
+      "timestamp": "2025-01-27T20:00:00.000Z"
     }
-  ],
-  "smtpSettings": {
-    "host": "smtp.hostinger.com",
-    "port": 587,
-    "username": "test@tilolive.in",
-    "password": "testpassword",
-    "from_email": "noreply@tilolive.in",
-    "from_name": "Tilo Live"
-  }
+  ]
 }
