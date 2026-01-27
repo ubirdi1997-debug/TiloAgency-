@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaWhatsapp, FaDiamond, FaChartLine, FaShieldAlt, FaEnvelope } from 'react-icons/fa6';
+import { MessageSquare, Gem, TrendingUp, Shield, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 import axios from 'axios';
 
