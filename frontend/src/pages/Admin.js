@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import axios from 'axios';
-import { FaTrash, FaEnvelope, FaCog, FaInbox, FaChartBar, FaEdit, FaCheck } from 'react-icons/fa6';
+import { Trash2, Mail, Settings, Inbox, BarChart3, Edit, Check } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -228,22 +228,22 @@ const Admin = () => {
         <Tabs defaultValue="dashboard" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 gap-2">
             <TabsTrigger value="dashboard" data-testid="tab-dashboard">
-              <FaChartBar className="mr-2" /> Dashboard
+              <BarChart3 className="mr-2" size={16} /> Dashboard
             </TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">
-              <FaCog className="mr-2" /> Settings
+              <Settings className="mr-2" size={16} /> Settings
             </TabsTrigger>
             <TabsTrigger value="messages" data-testid="tab-messages">
-              <FaInbox className="mr-2" /> Messages ({messages.filter(m => !m.read).length})
+              <Inbox className="mr-2" size={16} /> Messages ({messages.filter(m => !m.read).length})
             </TabsTrigger>
             <TabsTrigger value="newsletters" data-testid="tab-newsletters">
-              <FaEnvelope className="mr-2" /> Newsletters
+              <Mail className="mr-2" size={16} /> Newsletters
             </TabsTrigger>
             <TabsTrigger value="compose" data-testid="tab-compose">
-              <FaEdit className="mr-2" /> Compose
+              <Edit className="mr-2" size={16} /> Compose
             </TabsTrigger>
             <TabsTrigger value="smtp" data-testid="tab-smtp">
-              <FaCog className="mr-2" /> SMTP
+              <Settings className="mr-2" size={16} /> SMTP
             </TabsTrigger>
           </TabsList>
 
@@ -453,11 +453,11 @@ const Admin = () => {
                           <div className="flex gap-2">
                             {!msg.read && (
                               <Button size="sm" variant="outline" onClick={() => handleMarkRead(msg.id)} data-testid={`mark-read-${msg.id}`}>
-                                <FaCheck className="mr-1" /> Mark Read
+                                <Check className="mr-1" size={16} /> Mark Read
                               </Button>
                             )}
                             <Button size="sm" variant="destructive" onClick={() => handleDeleteMessage(msg.id)} data-testid={`delete-message-${msg.id}`}>
-                              <FaTrash />
+                              <Trash2 size={16} />
                             </Button>
                           </div>
                         </div>
@@ -494,7 +494,7 @@ const Admin = () => {
                           <p className="text-xs text-gray-500">{new Date(sub.timestamp).toLocaleString()}</p>
                         </div>
                         <Button size="sm" variant="destructive" onClick={() => handleDeleteNewsletter(sub.id)} data-testid={`delete-newsletter-${sub.id}`}>
-                          <FaTrash />
+                          <Trash2 size={16} />
                         </Button>
                       </div>
                     ))}
