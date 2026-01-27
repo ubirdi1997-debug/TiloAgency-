@@ -1,72 +1,236 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException, Depends, Header
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, EmailStr
+from typing import Optional, Dict, Any, List
+import json
+import aiosmtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 import uuid
-from datetime import datetime, timezone
-
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+DB_FILE = Path('/app/data/db.json')
 
-# Create the main app without a prefix
+security = HTTPBearer()
+
 app = FastAPI()
-
-# Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+def read_db():
+    with open(DB_FILE, 'r') as f:
+        return json.load(f)
 
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+def write_db(data):
+    with open(DB_FILE, 'w') as f:
+        json.dump(data, f, indent=2)
+
+class AdminLogin(BaseModel):
+    password: str
+
+class AdminLoginResponse(BaseModel):
+    success: bool
+    token: str
+
+class SiteSettings(BaseModel):
+    siteTitle: str
+    heroHeadline: str
+    heroSubheadline: str
+    primaryColor: str
+    secondaryColor: str
+    contactEmail: EmailStr
+    contactPhone: str
+    footerText: str
+    whatsappNumber: str
+    socialMedia: Dict[str, str]
+
+class ContactMessage(BaseModel):
+    name: str
+    email: EmailStr
+    phone: Optional[str] = None
+    subject: str
+    message: str
+
+class NewsletterSubscribe(BaseModel):
+    email: EmailStr
+
+class SMTPSettings(BaseModel):
+    host: str
+    port: int
+    username: str
+    password: str
+    from_email: EmailStr
+    from_name: str
+
+class ComposeEmail(BaseModel):
+    to: str
+    subject: str
+    body: str
+
+def verify_admin_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    if credentials.credentials != "admin-token-tilolive":
+        raise HTTPException(status_code=401, detail="Invalid authentication")
+    return credentials.credentials
+
+@api_router.post("/admin/login", response_model=AdminLoginResponse)
+async def admin_login(login: AdminLogin):
+    admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
+    if login.password == admin_password:
+        return AdminLoginResponse(success=True, token="admin-token-tilolive")
+    raise HTTPException(status_code=401, detail="Invalid password")
+
+@api_router.get("/admin/settings")
+async def get_settings(token: str = Depends(verify_admin_token)):
+    db = read_db()
+    return db.get('settings', {})
+
+@api_router.put("/admin/settings")
+async def update_settings(settings: SiteSettings, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    db['settings'] = settings.model_dump()
+    write_db(db)
+    return {"success": True, "settings": db['settings']}
+
+@api_router.get("/settings")
+async def get_public_settings():
+    db = read_db()
+    settings = db.get('settings', {})
+    # Remove sensitive info
+    return {
+        "siteTitle": settings.get('siteTitle'),
+        "heroHeadline": settings.get('heroHeadline'),
+        "heroSubheadline": settings.get('heroSubheadline'),
+        "primaryColor": settings.get('primaryColor'),
+        "secondaryColor": settings.get('secondaryColor'),
+        "contactEmail": settings.get('contactEmail'),
+        "contactPhone": settings.get('contactPhone'),
+        "footerText": settings.get('footerText'),
+        "whatsappNumber": settings.get('whatsappNumber'),
+        "socialMedia": settings.get('socialMedia', {})
+    }
+
+@api_router.post("/contact")
+async def submit_contact(contact: ContactMessage):
+    db = read_db()
+    message_data = contact.model_dump()
+    message_data['id'] = str(uuid.uuid4())
+    message_data['timestamp'] = datetime.utcnow().isoformat()
+    message_data['read'] = False
     
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    if 'messages' not in db:
+        db['messages'] = []
+    db['messages'].append(message_data)
+    write_db(db)
+    return {"success": True, "message": "Message received successfully"}
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+@api_router.get("/admin/messages")
+async def get_messages(token: str = Depends(verify_admin_token)):
+    db = read_db()
+    return db.get('messages', [])
 
-# Add your routes to the router instead of directly to app
+@api_router.delete("/admin/messages/{message_id}")
+async def delete_message(message_id: str, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    messages = db.get('messages', [])
+    db['messages'] = [m for m in messages if m.get('id') != message_id]
+    write_db(db)
+    return {"success": True}
+
+@api_router.put("/admin/messages/{message_id}/read")
+async def mark_message_read(message_id: str, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    messages = db.get('messages', [])
+    for msg in messages:
+        if msg.get('id') == message_id:
+            msg['read'] = True
+    write_db(db)
+    return {"success": True}
+
+@api_router.post("/newsletter")
+async def subscribe_newsletter(subscribe: NewsletterSubscribe):
+    db = read_db()
+    if 'newsletters' not in db:
+        db['newsletters'] = []
+    
+    # Check if already subscribed
+    existing = [n for n in db['newsletters'] if n.get('email') == subscribe.email]
+    if existing:
+        return {"success": True, "message": "Already subscribed"}
+    
+    newsletter_data = {
+        "id": str(uuid.uuid4()),
+        "email": subscribe.email,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+    db['newsletters'].append(newsletter_data)
+    write_db(db)
+    return {"success": True, "message": "Subscribed successfully"}
+
+@api_router.get("/admin/newsletters")
+async def get_newsletters(token: str = Depends(verify_admin_token)):
+    db = read_db()
+    return db.get('newsletters', [])
+
+@api_router.delete("/admin/newsletters/{newsletter_id}")
+async def delete_newsletter(newsletter_id: str, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    newsletters = db.get('newsletters', [])
+    db['newsletters'] = [n for n in newsletters if n.get('id') != newsletter_id]
+    write_db(db)
+    return {"success": True}
+
+@api_router.get("/admin/smtp-settings")
+async def get_smtp_settings(token: str = Depends(verify_admin_token)):
+    db = read_db()
+    return db.get('smtpSettings', {})
+
+@api_router.put("/admin/smtp-settings")
+async def update_smtp_settings(settings: SMTPSettings, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    db['smtpSettings'] = settings.model_dump()
+    write_db(db)
+    return {"success": True}
+
+@api_router.post("/admin/compose")
+async def compose_email(email: ComposeEmail, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    smtp_settings = db.get('smtpSettings')
+    
+    if not smtp_settings:
+        raise HTTPException(status_code=400, detail="SMTP settings not configured")
+    
+    try:
+        message = MIMEMultipart()
+        message['From'] = f"{smtp_settings['from_name']} <{smtp_settings['from_email']}>"
+        message['To'] = email.to
+        message['Subject'] = email.subject
+        
+        message.attach(MIMEText(email.body, 'html'))
+        
+        await aiosmtplib.send(
+            message,
+            hostname=smtp_settings['host'],
+            port=smtp_settings['port'],
+            username=smtp_settings['username'],
+            password=smtp_settings['password'],
+            use_tls=True
+        )
+        
+        return {"success": True, "message": "Email sent successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")
+
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Tilo Live API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
-
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
-
-# Include the router in the main app
 app.include_router(api_router)
 
 app.add_middleware(
@@ -77,13 +241,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
