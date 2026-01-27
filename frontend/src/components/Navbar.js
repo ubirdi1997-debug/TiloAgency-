@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa6';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ const Navbar = () => {
             className="md:hidden text-gray-700 hover:text-sky-500"
             data-testid="mobile-menu-toggle"
           >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>

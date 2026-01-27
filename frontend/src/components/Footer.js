@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa6';
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -22,10 +22,10 @@ const Footer = () => {
   }, []);
 
   const socialLinks = [
-    { icon: FaFacebook, url: settings?.socialMedia?.facebook, name: 'Facebook' },
-    { icon: FaInstagram, url: settings?.socialMedia?.instagram, name: 'Instagram' },
-    { icon: FaTwitter, url: settings?.socialMedia?.twitter, name: 'Twitter' },
-    { icon: FaYoutube, url: settings?.socialMedia?.youtube, name: 'YouTube' },
+    { icon: Facebook, url: settings?.socialMedia?.facebook, name: 'Facebook' },
+    { icon: Instagram, url: settings?.socialMedia?.instagram, name: 'Instagram' },
+    { icon: Twitter, url: settings?.socialMedia?.twitter, name: 'Twitter' },
+    { icon: Youtube, url: settings?.socialMedia?.youtube, name: 'YouTube' },
   ];
 
   return (
