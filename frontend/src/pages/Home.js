@@ -100,7 +100,7 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card-hover bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100" data-testid="feature-earnings">
               <div className="bg-sky-500 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                <FaDiamond className="text-white text-2xl" />
+                <Gem className="text-white" size={28} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Competitive Earnings</h3>
               <p className="text-gray-600">Earn based on diamonds, calls, and performance with transparent salary structures and timely payouts.</p>
@@ -108,7 +108,7 @@ const Home = () => {
 
             <div className="card-hover bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100" data-testid="feature-growth">
               <div className="bg-cyan-500 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                <FaChartLine className="text-white text-2xl" />
+                <TrendingUp className="text-white" size={28} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Career Growth</h3>
               <p className="text-gray-600">Access exclusive benefits, bonuses, and advancement opportunities as you build your presence.</p>
@@ -116,7 +116,7 @@ const Home = () => {
 
             <div className="card-hover bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100" data-testid="feature-secure">
               <div className="bg-sky-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                <FaShieldAlt className="text-white text-2xl" />
+                <Shield className="text-white" size={28} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Secure Platform</h3>
               <p className="text-gray-600">Professional support, clear guidelines, and secure payment systems ensure your peace of mind.</p>
@@ -176,7 +176,7 @@ const Home = () => {
       {/* Newsletter Section */}
       <section className="section-padding gradient-bg" data-testid="newsletter-section">
         <div className="max-w-2xl mx-auto text-center">
-          <FaEnvelope className="text-5xl text-white mx-auto mb-6" />
+          <Mail className="text-5xl text-white mx-auto mb-6" size={48} />
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white" style={{ fontFamily: 'Manrope, sans-serif' }}>
             Stay Updated
           </h2>
@@ -213,7 +213,7 @@ const Home = () => {
         className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all z-40 hover:scale-110"
         data-testid="whatsapp-float-button"
       >
-        <FaWhatsapp size={32} />
+        <MessageSquare size={32} />
       </a>
 
       <Footer />
