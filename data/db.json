@@ -1,0 +1,17 @@
+{
+  "settings": {
+    "siteName": "Tilo Agency",
+    "adminEmail": "admin@tiloagency.com"
+  },
+  "messages": [
+    {
+      "id": "1769542070604",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "subject": "Partnership Inquiry",
+      "message": "I'm interested in learning more about your services.",
+      "createdAt": "2026-01-27T19:27:50.604Z",
+      "read": true
+    }
+  ]
+}
