@@ -1,1 +1,38 @@
-{"settings":{"siteTitle":"Tilo Live","heroHeadline":"Join Tilo Live and Start Earning Today","heroSubheadline":"Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.","primaryColor":"#38bdf8","secondaryColor":"#0ea5e9","contactEmail":"info@tilolive.in","contactPhone":"+91 82669 41716","footerText":"© 2025 Tilo Live. All rights reserved.","whatsappNumber":"+918266941716","socialMedia":{"facebook":"","instagram":"","twitter":"","youtube":""}},"messages":[],"newsletters":[]}
+{
+  "settings": {
+    "siteTitle": "Tilo Live",
+    "heroHeadline": "Join Tilo Live and Start Earning Today",
+    "heroSubheadline": "Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.",
+    "primaryColor": "#38bdf8",
+    "secondaryColor": "#0ea5e9",
+    "contactEmail": "info@tilolive.in",
+    "contactPhone": "+91 82669 41716",
+    "footerText": "\u00a9 2025 Tilo Live. All rights reserved.",
+    "whatsappNumber": "+918266941716",
+    "socialMedia": {
+      "facebook": "",
+      "instagram": "",
+      "twitter": "",
+      "youtube": ""
+    }
+  },
+  "messages": [
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "+91 9876543210",
+      "subject": "Test Message",
+      "message": "This is a test message from the contact form",
+      "id": "0b77877c-4c4c-4af6-8158-7877b84ce0c0",
+      "timestamp": "2026-01-27T20:59:49.059681",
+      "read": false
+    }
+  ],
+  "newsletters": [
+    {
+      "id": "5a33fa10-651d-46dc-b689-f8201fc9b2ea",
+      "email": "subscriber@example.com",
+      "timestamp": "2026-01-27T20:59:49.673673"
+    }
+  ]
+}
