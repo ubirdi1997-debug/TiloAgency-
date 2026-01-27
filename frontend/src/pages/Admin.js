@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import axios from 'axios';
-import { FaTrash, FaEnvelope, FaCog, FaInbox, FaChartBar, FaEdit, FaCheck } from 'react-icons/fa';
+import { FaTrash, FaEnvelope, FaCog, FaInbox, FaChartBar, FaEdit, FaCheck } from 'react-icons/fa6';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;

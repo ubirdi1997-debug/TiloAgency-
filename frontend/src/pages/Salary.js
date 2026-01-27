@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaDiamond, FaPhone, FaUsers } from 'react-icons/fa';
+import { FaDiamond, FaPhone, FaUsers } from 'react-icons/fa6';
 
 const Salary = () => {
   const hostSalary = [

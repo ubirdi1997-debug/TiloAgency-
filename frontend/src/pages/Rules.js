@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { FaCheckCircle, FaExclamationTriangle, FaShieldAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaExclamationTriangle, FaShieldAlt } from 'react-icons/fa6';
 
 const Rules = () => {
   const rules = [
