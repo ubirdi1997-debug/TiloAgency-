@@ -6,13 +6,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { FaCheckCircle, FaExclamationTriangle, FaShieldAlt } from 'react-icons/fa6';
+import { CheckCircle, AlertTriangle, Shield } from 'lucide-react';
 
 const Rules = () => {
   const rules = [
     {
       category: 'Account & Profile',
-      icon: FaShieldAlt,
+      icon: Shield,
       color: 'text-sky-500',
       items: [
         { title: 'Profile Verification', content: 'Complete profile verification within 24 hours of registration. Provide accurate personal information and valid government-issued identification.' },
@@ -22,7 +22,7 @@ const Rules = () => {
     },
     {
       category: 'Content Standards',
-      icon: FaCheckCircle,
+      icon: CheckCircle,
       color: 'text-green-500',
       items: [
         { title: 'Professional Conduct', content: 'Maintain professional behavior during all calls. Use appropriate language and treat all users with respect and courtesy.' },
@@ -32,7 +32,7 @@ const Rules = () => {
     },
     {
       category: 'Call Requirements',
-      icon: FaExclamationTriangle,
+      icon: AlertTriangle,
       color: 'text-orange-500',
       items: [
         { title: 'Minimum Call Duration', content: 'Complete minimum 2 minutes per call to qualify for earnings. Early disconnections may affect your ratings and tier status.' },
@@ -43,7 +43,7 @@ const Rules = () => {
     },
     {
       category: 'Performance Standards',
-      icon: FaCheckCircle,
+      icon: CheckCircle,
       color: 'text-purple-500',
       items: [
         { title: 'Rating Maintenance', content: 'Maintain a minimum 4.0 star rating (out of 5) to retain your current tier. Ratings below 3.5 may result in demotion or account review.' },
@@ -53,7 +53,7 @@ const Rules = () => {
     },
     {
       category: 'Payment & Earnings',
-      icon: FaCheckCircle,
+      icon: CheckCircle,
       color: 'text-cyan-500',
       items: [
         { title: 'Salary Calculation', content: 'Salaries calculated based on verified diamonds, completed calls, and performance metrics. Reports available by the 3rd of each month.' },
@@ -64,7 +64,7 @@ const Rules = () => {
     },
     {
       category: 'Agent-Specific Rules',
-      icon: FaShieldAlt,
+      icon: Shield,
       color: 'text-blue-500',
       items: [
         { title: 'Host Recruitment', content: 'Recruit genuine, quality hosts who meet platform standards. You are responsible for initial training and guideline orientation of your team.' },
@@ -75,7 +75,7 @@ const Rules = () => {
     },
     {
       category: 'Penalties & Violations',
-      icon: FaExclamationTriangle,
+      icon: AlertTriangle,
       color: 'text-red-500',
       items: [
         { title: 'Warning System', content: 'First violation: Written warning. Second violation: 7-day suspension. Third violation: Permanent account termination. No exceptions for major violations.' },
@@ -85,7 +85,7 @@ const Rules = () => {
     },
     {
       category: 'Platform Guidelines',
-      icon: FaShieldAlt,
+      icon: Shield,
       color: 'text-indigo-500',
       items: [
         { title: 'Terms Updates', content: 'Platform reserves the right to update terms and conditions. Users notified 7 days before implementation. Continued use implies acceptance.' },
@@ -113,7 +113,7 @@ const Rules = () => {
 
           <div className="bg-sky-50 border border-sky-200 rounded-xl p-6 mb-8">
             <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-              <FaCheckCircle className="text-sky-500" />
+              <CheckCircle className="text-sky-500" size={20} />
               Important Notice
             </h3>
             <p className="text-sm text-gray-600">
@@ -125,7 +125,7 @@ const Rules = () => {
             <div key={index} className="mb-8" data-testid={`rules-category-${section.category.toLowerCase().replace(/\s+/g, '-')}`}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="bg-white p-3 rounded-xl shadow-sm">
-                  <section.icon className={`text-2xl ${section.color}`} />
+                  <section.icon className={section.color} size={24} />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
                   {section.category}

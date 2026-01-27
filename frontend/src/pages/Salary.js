@@ -1,14 +1,14 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaDiamond, FaPhone, FaUsers } from 'react-icons/fa6';
+import { Gem, Phone, Users } from 'lucide-react';
 
 const Salary = () => {
   const hostSalary = [
-    { level: 'Bronze', diamonds: '0 - 5,000', earning: '₹5,000 - ₹15,000', icon: FaDiamond, color: 'from-orange-400 to-orange-600' },
-    { level: 'Silver', diamonds: '5,001 - 15,000', earning: '₹15,000 - ₹35,000', icon: FaDiamond, color: 'from-gray-400 to-gray-600' },
-    { level: 'Gold', diamonds: '15,001 - 30,000', earning: '₹35,000 - ₹60,000', icon: FaDiamond, color: 'from-yellow-400 to-yellow-600' },
-    { level: 'Platinum', diamonds: '30,001 - 50,000', earning: '₹60,000 - ₹1,00,000', icon: FaDiamond, color: 'from-sky-400 to-sky-600' },
-    { level: 'Diamond', diamonds: '50,001+', earning: '₹1,00,000+', icon: FaDiamond, color: 'from-purple-400 to-purple-600' },
+    { level: 'Bronze', diamonds: '0 - 5,000', earning: '₹5,000 - ₹15,000', icon: Gem, color: 'from-orange-400 to-orange-600' },
+    { level: 'Silver', diamonds: '5,001 - 15,000', earning: '₹15,000 - ₹35,000', icon: Gem, color: 'from-gray-400 to-gray-600' },
+    { level: 'Gold', diamonds: '15,001 - 30,000', earning: '₹35,000 - ₹60,000', icon: Gem, color: 'from-yellow-400 to-yellow-600' },
+    { level: 'Platinum', diamonds: '30,001 - 50,000', earning: '₹60,000 - ₹1,00,000', icon: Gem, color: 'from-sky-400 to-sky-600' },
+    { level: 'Diamond', diamonds: '50,001+', earning: '₹1,00,000+', icon: Gem, color: 'from-purple-400 to-purple-600' },
   ];
 
   const agentTiers = [
@@ -36,14 +36,14 @@ const Salary = () => {
           {/* Host Salary Cards */}
           <section className="mb-20" data-testid="host-salary-section">
             <div className="flex items-center justify-center gap-3 mb-8">
-              <FaPhone className="text-3xl text-sky-500" />
+              <Phone className="text-sky-500" size={32} />
               <h2 className="text-3xl font-bold text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>Host Salary Tiers</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {hostSalary.map((tier, index) => (
                 <div key={index} className="card-hover bg-white rounded-2xl p-8 border border-gray-200 shadow-lg" data-testid={`host-tier-${tier.level.toLowerCase()}`}>
                   <div className={`bg-gradient-to-r ${tier.color} w-16 h-16 rounded-xl flex items-center justify-center mb-6`}>
-                    <tier.icon className="text-white text-2xl" />
+                    <tier.icon className="text-white" size={28} />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-900">{tier.level}</h3>
                   <div className="space-y-3">
@@ -69,14 +69,14 @@ const Salary = () => {
           {/* Agent Commission Cards */}
           <section data-testid="agent-salary-section">
             <div className="flex items-center justify-center gap-3 mb-8">
-              <FaUsers className="text-3xl text-cyan-500" />
+              <Users className="text-cyan-500" size={32} />
               <h2 className="text-3xl font-bold text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>Agent Commission Structure</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {agentTiers.map((tier, index) => (
                 <div key={index} className="card-hover bg-white rounded-2xl p-8 border border-gray-200 shadow-lg" data-testid={`agent-tier-${tier.tier.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className={`bg-gradient-to-r ${tier.color} w-16 h-16 rounded-xl flex items-center justify-center mb-6`}>
-                    <FaUsers className="text-white text-2xl" />
+                    <Users className="text-white" size={28} />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-900">{tier.tier}</h3>
                   <div className="space-y-3">

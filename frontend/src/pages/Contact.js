@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaPhone, FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa6';
+import { Phone, Mail, MessageSquare, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 import axios from 'axios';
 
@@ -54,7 +54,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
             <div className="card-hover bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center" data-testid="contact-info-whatsapp">
               <div className="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <FaWhatsapp className="text-green-600 text-2xl" />
+                <MessageSquare className="text-green-600" size={28} />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">WhatsApp</h3>
               <p className="text-gray-600 text-sm mb-3">Quick responses via WhatsApp</p>
@@ -63,7 +63,7 @@ const Contact = () => {
 
             <div className="card-hover bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center" data-testid="contact-info-email">
               <div className="bg-sky-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <FaEnvelope className="text-sky-600 text-2xl" />
+                <Mail className="text-sky-600" size={28} />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Email</h3>
               <p className="text-gray-600 text-sm mb-3">Send us an email anytime</p>
@@ -72,7 +72,7 @@ const Contact = () => {
 
             <div className="card-hover bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center" data-testid="contact-info-phone">
               <div className="bg-cyan-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <FaPhone className="text-cyan-600 text-2xl" />
+                <Phone className="text-cyan-600" size={28} />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Phone</h3>
               <p className="text-gray-600 text-sm mb-3">Give us a call</p>
