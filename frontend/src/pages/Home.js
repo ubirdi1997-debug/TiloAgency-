@@ -111,24 +111,24 @@ const Home = () => {
   return (
     <div className="min-h-screen" data-testid="home-page">
       {/* Navbar */}
-      <nav className="fixed w-full top-0 z-50 glass-effect" data-testid="main-navbar">
+      <nav className="fixed w-full top-0 z-50 glass-effect border-b border-gray-100" data-testid="main-navbar">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3">
               <img 
                 src="https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png" 
                 alt="Tilo Live Logo" 
-                className="h-12"
+                className="h-14 transition-all duration-300"
               />
             </div>
-            <div className="flex items-center space-x-8">
-              <a href="#home" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Home</a>
-              <a href="#about" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">About</a>
-              <a href="#tilo-agency" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Tilo Agency</a>
-              <a href="#tilo-streamer" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Tilo Streamer</a>
-              <a href="#salary" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Salary</a>
-              <a href="#rules" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Rules</a>
-              <a href="#contact" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Contact</a>
+            <div className="hidden md:flex items-center space-x-1">
+              <a href="#home" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">Home</a>
+              <a href="#about" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">About</a>
+              <a href="#tilo-agency" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">Tilo Agency</a>
+              <a href="#tilo-streamer" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">Tilo Streamer</a>
+              <a href="#salary" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">Salary</a>
+              <a href="#rules" className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300">Rules</a>
+              <a href="#contact" className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40">Contact</a>
             </div>
           </div>
         </div>
