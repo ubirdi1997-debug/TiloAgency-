@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MessageSquare, Gem, TrendingUp, Shield, Mail, Video, MessageCircle, Gift, Clock, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
+import { MessageSquare, Gem, TrendingUp, Shield, Mail, Video, MessageCircle, Gift, Clock, CheckCircle, XCircle, AlertTriangle, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import axios from 'axios';
 import {
@@ -849,15 +849,47 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <img 
-            src="https://customer-assets.emergentagent.com/job_9f71c832-32c0-4e43-a54d-148da0bec377/artifacts/rv69rtzr_Firefly_Gemini_Flash_remove_background_389106-removebg-preview%20%281%29.png" 
-            alt="Tilo Live" 
-            className="h-10 mx-auto mb-4 brightness-0 invert"
-          />
-          <p className="text-gray-400 text-sm">
-            © 2025 Tilo Live. All rights reserved.
-          </p>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png" 
+                alt="Tilo Live" 
+                className="h-10 mb-4 brightness-0 invert"
+              />
+              <p className="text-gray-400 text-sm">
+                Professional live streaming platform connecting hosts and audiences worldwide.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <div className="space-y-2">
+                <a href="#home" className="block text-gray-400 hover:text-sky-400 transition-colors">Home</a>
+                <a href="#about" className="block text-gray-400 hover:text-sky-400 transition-colors">About Us</a>
+                <a href="#tilo-agency" className="block text-gray-400 hover:text-sky-400 transition-colors">Tilo Agency</a>
+                <a href="#tilo-streamer" className="block text-gray-400 hover:text-sky-400 transition-colors">Tilo Streamer</a>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
+              <p className="text-gray-400 text-sm mb-2">support@tilolive.in</p>
+              <p className="text-gray-400 text-sm mb-4">Phone: {settings?.contactPhone || '+91 82669 41716'}</p>
+              <a
+                href={`https://whatsapp.com/channel/0029VbCCYeQ2P59t8LBOSe1V`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+              >
+                <MessageSquare size={18} />
+                Join WhatsApp Channel
+              </a>
+            </div>
+          </div>
+          <div className="text-center border-t border-gray-800 pt-8">
+            <p className="text-gray-400 text-sm">
+              © 2025 Tilo Live. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
 
