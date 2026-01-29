@@ -116,15 +116,17 @@ const Home = () => {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3">
               <img 
-                src="https://customer-assets.emergentagent.com/job_9f71c832-32c0-4e43-a54d-148da0bec377/artifacts/rv69rtzr_Firefly_Gemini_Flash_remove_background_389106-removebg-preview%20%281%29.png" 
+                src="https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png" 
                 alt="Tilo Live Logo" 
                 className="h-12"
               />
             </div>
             <div className="flex items-center space-x-8">
               <a href="#home" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Home</a>
+              <a href="#about" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">About</a>
+              <a href="#tilo-agency" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Tilo Agency</a>
+              <a href="#tilo-streamer" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Tilo Streamer</a>
               <a href="#salary" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Salary</a>
-              <a href="#benefits" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Benefits</a>
               <a href="#rules" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Rules</a>
               <a href="#contact" className="text-base font-medium text-gray-700 hover:text-sky-500 transition-colors">Contact</a>
             </div>
@@ -189,6 +191,247 @@ const Home = () => {
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="section-padding bg-white" data-testid="about-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
+              About <span className="text-gradient">Tilo Live</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Experience live streaming like never before
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-gray-900">Your Gateway to Live Entertainment</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Tilo Live App is a live streaming and social interaction platform built for creators, agencies, and streamers to grow and earn together. The app combines live streaming, video chat, text messaging, and virtual gifting into one smooth and engaging experience.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                Join thousands of hosts and agents who are earning through our innovative platform. Whether you're a content creator, influencer, or someone looking to monetize your social presence, Tilo Live provides all the tools you need to succeed.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=Tell%20me%20more%20about%20Tilo%20Live`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center justify-center gap-2 text-center"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-sky-100 to-cyan-100 rounded-3xl p-8 shadow-2xl">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-white rounded-xl p-6 text-center">
+                    <div className="text-3xl font-bold text-sky-500 mb-2">10K+</div>
+                    <p className="text-gray-600 text-sm">Active Hosts</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 text-center">
+                    <div className="text-3xl font-bold text-cyan-500 mb-2">500+</div>
+                    <p className="text-gray-600 text-sm">Agencies</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 text-center">
+                    <div className="text-3xl font-bold text-purple-500 mb-2">24/7</div>
+                    <p className="text-gray-600 text-sm">Support</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 text-center">
+                    <div className="text-3xl font-bold text-green-500 mb-2">$1M+</div>
+                    <p className="text-gray-600 text-sm">Paid Out</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tilo Agency Section */}
+      <section id="tilo-agency" className="section-padding gradient-bg" data-testid="tilo-agency-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white" style={{ fontFamily: 'Manrope, sans-serif' }}>
+              Tilo Agency Partner Program
+            </h2>
+            <p className="text-lg text-white/90 max-w-3xl mx-auto">
+              Build a long-term earning source in the live streaming industry
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-gray-900">Become a Tilo Agent</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Tilo Agency is an official partner program of the Tilo App, designed to provide strong income opportunities for agents who recruit and manage hosts or streamers. By completing Tilo app agency registration, agents can build a long-term earning source in the live streaming and video chat industry.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={20} />
+                    <p className="text-gray-700"><strong>Recruit & Earn:</strong> Build your team of hosts and earn commission on their earnings</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={20} />
+                    <p className="text-gray-700"><strong>Instant Payouts:</strong> Get paid weekly through secure Epay system</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={20} />
+                    <p className="text-gray-700"><strong>24/7 Support:</strong> Dedicated agent support team to help you grow</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={20} />
+                    <p className="text-gray-700"><strong>Growth Bonuses:</strong> Additional rewards as your team expands</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8">
+                <h4 className="text-xl font-bold text-gray-900 mb-6">Why Join as Agent?</h4>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-xl p-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center">
+                        <TrendingUp className="text-white" size={20} />
+                      </div>
+                      <h5 className="font-semibold text-gray-900">High Commission Rates</h5>
+                    </div>
+                    <p className="text-sm text-gray-600">Earn 5% to 20% commission based on your team's performance</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
+                        <Users className="text-white" size={20} />
+                      </div>
+                      <h5 className="font-semibold text-gray-900">Build Your Team</h5>
+                    </div>
+                    <p className="text-sm text-gray-600">No limit on team size - grow as big as you want</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                        <Gem className="text-white" size={20} />
+                      </div>
+                      <h5 className="font-semibold text-gray-900">Performance Bonuses</h5>
+                    </div>
+                    <p className="text-sm text-gray-600">Additional bonuses for top-performing agencies</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <a
+                href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=I%20want%20to%20join%20as%20Tilo%20Agent`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center justify-center gap-2"
+              >
+                Join as Tilo Agent →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tilo Streamer Section */}
+      <section id="tilo-streamer" className="section-padding bg-white" data-testid="tilo-streamer-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
+              Tilo <span className="text-gradient">Streamer</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Start your live streaming journey and earn from day one
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div className="relative order-2 md:order-1">
+              <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl p-8 shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" 
+                  alt="Live Streaming" 
+                  className="rounded-2xl w-full"
+                />
+              </div>
+            </div>
+            <div className="space-y-6 order-1 md:order-2">
+              <h3 className="text-2xl font-bold text-gray-900">Become a Host & Start Earning</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Join Tilo Live as a streamer and connect with audiences worldwide. Whether you want to showcase your talent, share your daily life, or build a community, Tilo provides the perfect platform to monetize your content.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Video className="text-sky-500 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Live Video Streaming</h5>
+                    <p className="text-sm text-gray-600">Go live anytime and earn from video calls and gifts</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MessageCircle className="text-cyan-500 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Chat & Connect</h5>
+                    <p className="text-sm text-gray-600">Build relationships through text chat and earn from replies</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Gift className="text-purple-500 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Receive Gifts</h5>
+                    <p className="text-sm text-gray-600">Get virtual gifts from fans and convert them to real cash</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Gem className="text-green-500 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Flexible Earnings</h5>
+                    <p className="text-sm text-gray-600">Work on your schedule and withdraw anytime</p>
+                  </div>
+                </div>
+              </div>
+              <a
+                href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=I%20want%20to%20join%20as%20Tilo%20Streamer`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center justify-center gap-2"
+              >
+                Join as Tilo Streamer →
+              </a>
+            </div>
+          </div>
+
+          {/* App Features */}
+          <div className="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-3xl p-8 sm:p-12">
+            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Tilo App Features</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="bg-sky-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Video className="text-sky-600" size={28} />
+                </div>
+                <h4 className="font-bold text-gray-900 mb-2">Live Streaming</h4>
+                <p className="text-sm text-gray-600">High-quality video streaming with real-time interaction</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="bg-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle className="text-cyan-600" size={28} />
+                </div>
+                <h4 className="font-bold text-gray-900 mb-2">Private Calls</h4>
+                <p className="text-sm text-gray-600">One-on-one video calls with premium earnings</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Gift className="text-purple-600" size={28} />
+                </div>
+                <h4 className="font-bold text-gray-900 mb-2">Virtual Gifting</h4>
+                <p className="text-sm text-gray-600">Receive and convert gifts to diamonds instantly</p>
               </div>
             </div>
           </div>
