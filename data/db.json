@@ -36,6 +36,16 @@
       "id": "88237faa-7be7-49d1-b4ae-b953e27bcd27",
       "timestamp": "2026-01-29T05:10:42.130535",
       "read": false
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "+91 9876543210",
+      "subject": "Test Subject",
+      "message": "This is a test message from automated testing.",
+      "id": "0c29a8fb-a33d-4170-acc7-a4c7878f3a3b",
+      "timestamp": "2026-01-29T05:11:31.508866",
+      "read": false
     }
   ],
   "newsletters": [
