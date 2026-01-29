@@ -135,14 +135,18 @@ const Home = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="hero-gradient pt-32 pb-20 px-4" data-testid="hero-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Manrope, sans-serif' }} data-testid="hero-headline">
-                Join Tilo Live and Start Earning Today
+      <section id="home" className="hero-gradient pt-32 pb-20 px-4 relative overflow-hidden" data-testid="hero-section">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full border border-purple-200">
+                <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                <span className="text-sm font-semibold text-purple-700">Welcome to Tilo Live</span>
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Outfit, sans-serif' }} data-testid="hero-headline">
+                Join Tilo Live and <span className="text-gradient">Start Earning</span> Today
               </h1>
-              <p className="text-base sm:text-lg text-gray-600" data-testid="hero-subheadline">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed" data-testid="hero-subheadline">
                 Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -150,47 +154,68 @@ const Home = () => {
                   href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello,%20I%20want%20to%20be%20a%20Host%20at%20Tilo%20Live`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center justify-center gap-2 text-center"
+                  className="btn-primary inline-flex items-center justify-center gap-2 text-center group"
                   data-testid="cta-host-button"
                 >
                   I'm a Host
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </a>
                 <a
                   href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello,%20I%20want%20to%20be%20an%20Agent%20at%20Tilo%20Live`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline inline-flex items-center justify-center gap-2 text-center"
+                  className="btn-outline inline-flex items-center justify-center gap-2 text-center group"
                   data-testid="cta-agent-button"
                 >
                   I'm an Agent
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </a>
               </div>
             </div>
             
-            {/* Salary Sheet Table */}
-            <div className="relative">
-              <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200">
-                <h3 className="text-2xl font-bold text-center mb-6 text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                  Tilo App Official Salary Sheet
-                </h3>
-                <div className="overflow-x-auto">
+            {/* Salary Sheet Table - Modern Design */}
+            <div className="relative animate-float">
+              <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl blur-2xl opacity-20"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center">
+                    <Gem className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                      Official Salary Sheet
+                    </h3>
+                    <p className="text-sm text-gray-500">Transparent earnings structure</p>
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-gray-100">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b-2 border-sky-500">
-                        <th className="text-left py-3 px-4 font-semibold text-gray-900">Coins (Target)</th>
-                        <th className="text-right py-3 px-4 font-semibold text-gray-900">Payout (INR)</th>
+                      <tr className="bg-gradient-to-r from-purple-600 to-indigo-600">
+                        <th className="text-left py-4 px-4 font-semibold text-white text-sm">Coins Target</th>
+                        <th className="text-right py-4 px-4 font-semibold text-white text-sm">Payout (INR)</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {salarySheet.map((row, index) => (
-                        <tr key={index} className="border-b border-gray-200 hover:bg-sky-50 transition-colors">
-                          <td className="py-3 px-4 text-gray-700">{row.coins.toLocaleString()} Coins</td>
-                          <td className="text-right py-3 px-4 font-semibold text-sky-600">₹ {row.rupees.toLocaleString()}</td>
+                      {salarySheet.slice(0, 5).map((row, index) => (
+                        <tr key={index} className="border-t border-gray-100 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all duration-300">
+                          <td className="py-4 px-4 text-gray-700 font-medium">{row.coins.toLocaleString()}</td>
+                          <td className="text-right py-4 px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">₹ {row.rupees.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
+                <a href="#salary" className="mt-4 text-sm font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-2 group">
+                  View complete salary structure
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
