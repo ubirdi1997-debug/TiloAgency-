@@ -1,81 +1,23 @@
 {
   "settings": {
-    "siteTitle": "Tilo Live Test",
-    "heroHeadline": "Test Headline",
-    "heroSubheadline": "Test Subheadline",
-    "primaryColor": "#38bdf8",
-    "secondaryColor": "#0ea5e9",
-    "contactEmail": "test@tilolive.in",
+    "siteTitle": "Tilo Live",
+    "heroHeadline": "Join Tilo Live and Start Earning Today",
+    "heroSubheadline": "Become a Host or Agent and unlock flexible payouts, exclusive rewards, and professional growth opportunities.",
+    "primaryColor": "#667eea",
+    "secondaryColor": "#764ba2",
+    "contactEmail": "info@tilolive.in",
     "contactPhone": "+91 82669 41716",
-    "footerText": "\u00a9 2025 Tilo Live Test",
+    "companyName": "Tilo Live",
     "whatsappNumber": "+918266941716",
     "socialMedia": {
       "facebook": "",
       "instagram": "",
       "twitter": "",
       "youtube": ""
-    }
+    },
+    "headerLogo": null,
+    "footerLogo": null
   },
-  "messages": [
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "+91 9876543210",
-      "subject": "Test Message",
-      "message": "This is a test message from the contact form",
-      "id": "test-message-1",
-      "timestamp": "2025-01-27T20:00:00.000Z",
-      "read": false
-    },
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "+91 9876543210",
-      "subject": "Test Subject",
-      "message": "This is a test message",
-      "id": "88237faa-7be7-49d1-b4ae-b953e27bcd27",
-      "timestamp": "2026-01-29T05:10:42.130535",
-      "read": false
-    },
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "+91 9876543210",
-      "subject": "Test Subject",
-      "message": "This is a test message from automated testing.",
-      "id": "0c29a8fb-a33d-4170-acc7-a4c7878f3a3b",
-      "timestamp": "2026-01-29T05:11:31.508866",
-      "read": false
-    },
-    {
-      "name": "Test User",
-      "email": "test@example.com",
-      "phone": "+1234567890",
-      "subject": "Test Subject",
-      "message": "This is a test message",
-      "id": "627076e9-1f62-488a-8053-300b74cabb0d",
-      "timestamp": "2026-01-29T05:27:27.626786",
-      "read": false
-    }
-  ],
-  "newsletters": [
-    {
-      "id": "test-newsletter-1",
-      "email": "subscriber@example.com",
-      "timestamp": "2025-01-27T20:00:00.000Z"
-    },
-    {
-      "id": "5cd9294a-76f4-4140-a9e5-17e8f9b4b406",
-      "email": "test_051042@example.com",
-      "timestamp": "2026-01-29T05:10:42.272593"
-    }
-  ],
-  "smtpSettings": {
-    "host": "smtp.hostinger.com",
-    "port": 587,
-    "username": "test@tilolive.in",
-    "password": "testpassword",
-    "from_email": "noreply@tilolive.in",
-    "from_name": "Tilo Live"
-  }
+  "messages": [],
+  "newsletters": []
 }

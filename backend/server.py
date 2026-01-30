@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Depends, Header
+from fastapi import FastAPI, APIRouter, HTTPException, Depends, Header, UploadFile, File
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
@@ -13,11 +13,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import uuid
+import bcrypt
+import shutil
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 DB_FILE = Path('/app/data/db.json')
+UPLOADS_DIR = Path('/app/frontend/public/uploads')
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 security = HTTPBearer()
 
@@ -32,12 +36,22 @@ def write_db(data):
     with open(DB_FILE, 'w') as f:
         json.dump(data, f, indent=2)
 
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+
 class AdminLogin(BaseModel):
     password: str
 
 class AdminLoginResponse(BaseModel):
     success: bool
     token: str
+
+class PasswordChange(BaseModel):
+    oldPassword: str
+    newPassword: str
 
 class SiteSettings(BaseModel):
     siteTitle: str
@@ -47,9 +61,11 @@ class SiteSettings(BaseModel):
     secondaryColor: str
     contactEmail: EmailStr
     contactPhone: str
-    footerText: str
+    companyName: str
     whatsappNumber: str
     socialMedia: Dict[str, str]
+    headerLogo: Optional[str] = None
+    footerLogo: Optional[str] = None
 
 class ContactMessage(BaseModel):
     name: str
@@ -81,10 +97,71 @@ def verify_admin_token(credentials: HTTPAuthorizationCredentials = Depends(secur
 
 @api_router.post("/admin/login", response_model=AdminLoginResponse)
 async def admin_login(login: AdminLogin):
-    admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
-    if login.password == admin_password:
+    db = read_db()
+    stored_hash = db.get('adminPasswordHash')
+    
+    if not stored_hash:
+        # First time - create hash from env password
+        admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
+        stored_hash = hash_password(admin_password)
+        db['adminPasswordHash'] = stored_hash
+        write_db(db)
+    
+    if verify_password(login.password, stored_hash):
         return AdminLoginResponse(success=True, token="admin-token-tilolive")
     raise HTTPException(status_code=401, detail="Invalid password")
+
+@api_router.post("/admin/change-password")
+async def change_password(data: PasswordChange, token: str = Depends(verify_admin_token)):
+    db = read_db()
+    stored_hash = db.get('adminPasswordHash')
+    
+    if not stored_hash:
+        raise HTTPException(status_code=400, detail="Password not initialized")
+    
+    # Verify old password
+    if not verify_password(data.oldPassword, stored_hash):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    
+    # Hash and save new password
+    new_hash = hash_password(data.newPassword)
+    db['adminPasswordHash'] = new_hash
+    write_db(db)
+    
+    return {"success": True, "message": "Password changed successfully"}
+
+@api_router.post("/admin/upload-logo")
+async def upload_logo(file: UploadFile = File(...), logoType: str = 'header', token: str = Depends(verify_admin_token)):
+    try:
+        # Validate file type
+        if not file.content_type.startswith('image/'):
+            raise HTTPException(status_code=400, detail="Only image files are allowed")
+        
+        # Generate unique filename
+        file_ext = file.filename.split('.')[-1]
+        unique_filename = f"{logoType}_logo_{uuid.uuid4().hex[:8]}.{file_ext}"
+        file_path = UPLOADS_DIR / unique_filename
+        
+        # Save file
+        with open(file_path, 'wb') as f:
+            shutil.copyfileobj(file.file, f)
+        
+        # Update database
+        db = read_db()
+        if 'settings' not in db:
+            db['settings'] = {}
+        
+        logo_url = f"/uploads/{unique_filename}"
+        if logoType == 'header':
+            db['settings']['headerLogo'] = logo_url
+        else:
+            db['settings']['footerLogo'] = logo_url
+        
+        write_db(db)
+        
+        return {"success": True, "logoUrl": logo_url}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @api_router.get("/admin/settings")
 async def get_settings(token: str = Depends(verify_admin_token)):
@@ -102,7 +179,6 @@ async def update_settings(settings: SiteSettings, token: str = Depends(verify_ad
 async def get_public_settings():
     db = read_db()
     settings = db.get('settings', {})
-    # Remove sensitive info
     return {
         "siteTitle": settings.get('siteTitle'),
         "heroHeadline": settings.get('heroHeadline'),
@@ -111,9 +187,11 @@ async def get_public_settings():
         "secondaryColor": settings.get('secondaryColor'),
         "contactEmail": settings.get('contactEmail'),
         "contactPhone": settings.get('contactPhone'),
-        "footerText": settings.get('footerText'),
+        "companyName": settings.get('companyName', 'Tilo Live'),
         "whatsappNumber": settings.get('whatsappNumber'),
-        "socialMedia": settings.get('socialMedia', {})
+        "socialMedia": settings.get('socialMedia', {}),
+        "headerLogo": settings.get('headerLogo'),
+        "footerLogo": settings.get('footerLogo')
     }
 
 @api_router.post("/contact")
@@ -159,7 +237,6 @@ async def subscribe_newsletter(subscribe: NewsletterSubscribe):
     if 'newsletters' not in db:
         db['newsletters'] = []
     
-    # Check if already subscribed
     existing = [n for n in db['newsletters'] if n.get('email') == subscribe.email]
     if existing:
         return {"success": True, "message": "Already subscribed"}
