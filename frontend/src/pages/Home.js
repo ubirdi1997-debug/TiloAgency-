@@ -16,6 +16,7 @@ const Home = () => {
   const [settings, setSettings] = useState(null);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -65,6 +66,10 @@ const Home = () => {
   };
 
   const whatsappNumber = settings?.whatsappNumber || '+918266941716';
+  const headerLogo = settings?.headerLogo || 'https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png';
+  const footerLogo = settings?.footerLogo || 'https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png';
+  const companyName = settings?.companyName || 'Tilo Live';
+  const currentYear = new Date().getFullYear();
 
   const salarySheet = [
     { coins: 40000, rupees: 800 },
