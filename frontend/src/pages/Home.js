@@ -914,10 +914,10 @@ const Home = () => {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <img 
-                src="https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/cd62r0gu_wbandxtqn5ktf3j6bzylmi1jnea-mv0p56qjkefznk1k-OT1NoOkggDJNZCyY.png" 
+                src={footerLogo}
                 alt="Tilo Live" 
                 className="h-10 mb-4 brightness-0 invert"
               />
@@ -928,10 +928,10 @@ const Home = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="#home" className="block text-gray-400 hover:text-sky-400 transition-colors">Home</a>
-                <a href="#about" className="block text-gray-400 hover:text-sky-400 transition-colors">About Us</a>
-                <a href="#tilo-agency" className="block text-gray-400 hover:text-sky-400 transition-colors">Tilo Agency</a>
-                <a href="#tilo-streamer" className="block text-gray-400 hover:text-sky-400 transition-colors">Tilo Streamer</a>
+                <a href="#home" className="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Home</a>
+                <a href="#about" className="block text-gray-400 hover:text-purple-400 transition-colors text-sm">About Us</a>
+                <a href="#tilo-agency" className="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Tilo Agency</a>
+                <a href="#tilo-streamer" className="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Tilo Streamer</a>
               </div>
             </div>
             <div>
@@ -942,16 +942,19 @@ const Home = () => {
                 href={`https://whatsapp.com/channel/0029VbCCYeQ2P59t8LBOSe1V`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm"
               >
                 <MessageSquare size={18} />
                 Join WhatsApp Channel
               </a>
             </div>
           </div>
-          <div className="text-center border-t border-gray-800 pt-8">
+          <div className="text-center border-t border-gray-800 pt-8 space-y-2">
             <p className="text-gray-400 text-sm">
-              © 2025 Tilo Live. All rights reserved.
+              Developed & Maintained By <a href="https://usafe.in" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 font-semibold">Urbanesafe LLP</a>
+            </p>
+            <p className="text-gray-400 text-sm">
+              &copy; {currentYear} {companyName}. All rights reserved.
             </p>
           </div>
         </div>
