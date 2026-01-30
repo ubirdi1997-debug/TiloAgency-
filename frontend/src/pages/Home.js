@@ -420,8 +420,8 @@ const Home = () => {
             <div className="relative order-2 md:order-1">
               <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl p-8 shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" 
-                  alt="Live Streaming" 
+                  src="https://customer-assets.emergentagent.com/job_tilo-rebrand/artifacts/07tlhj0c_Phone%20Screens.png" 
+                  alt="Tilo Live App Screens" 
                   className="rounded-2xl w-full"
                 />
               </div>
