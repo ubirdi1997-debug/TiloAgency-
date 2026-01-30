@@ -165,7 +165,34 @@ html {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 80px 20px;
+    padding: 60px 16px;
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .btn-primary, .btn-outline {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  table thead tr th,
+  table tbody tr td {
+    padding: 12px 8px;
   }
 }
 
